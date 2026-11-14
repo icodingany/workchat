@@ -129,6 +129,17 @@
 
 ## 整体架构
 
+### AI 与 MCP 接入
+
+[客徕徕 MCP Server](https://github.com/lwang998/kelailai-mcp-server) 为整个项目提供面向 AI 客户端的业务接入层：**42 个公开工具、17 个业务 Skills**，覆盖会话查询、客户理解、消息发送、朋友圈、群发、标签、素材、公共话术与运营分析。
+
+- AI 可以先查数据、整理建议，再在用户确认后调用业务工具；支持预演、参数校验及读写限流。
+- HTTP / stdio 接入说明、客户端配置和工具清单见 [MCP 使用说明](https://github.com/lwang998/kelailai-mcp-server/blob/main/docs/USAGE.md)。
+- Tools 提供调用能力，Skills 提供业务流程；实时消息盒子需要额外部署，不由本前端自动开启。
+- 当前 MCP 核心适配的是 `wei-kefu-be` 的接口契约。企业微信 `wework-server` 需要逐项核对接口，不能仅替换后端 URL 就认为所有工具兼容。
+
+MCP 扩展 AI 操作入口，本仓库继续提供客服和管理员的可视化工作台，两者通过兼容后端共享业务能力。
+
 ```mermaid
 flowchart LR
     User[客服 / 管理员] --> Front[workchat · Vue 3]
@@ -143,6 +154,7 @@ flowchart LR
 
 | 项目 / 服务 | 角色 |
 | --- | --- |
+| [kelailai-mcp-server](https://github.com/lwang998/kelailai-mcp-server) | AI 工具、业务 Skills 与 Agent 接入服务 |
 | [workchat](https://github.com/icodingany/workchat) | 本仓库：企业微信前端和桌面工程 |
 | [wework-server](https://github.com/icodingany/wework-server) | 企业微信业务 API、WebSocket 与设备通道 |
 | [wei-kefu-be](https://github.com/icodingany/wei-kefu-be) | 关联业务后端与主账号体系 |
