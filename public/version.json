@@ -1,0 +1,7 @@
+{
+  "version": "0",
+  "buildTime": "",
+  "description": "企聊客服系统 版本信息（构建时由 VersionJsonPlugin 覆盖）",
+  "clearDataOnUpgrade": false,
+  "changelog": []
+}

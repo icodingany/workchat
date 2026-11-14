@@ -1,0 +1,43 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "企聊客服系统",
+  "version": "0.1.0",
+  "identifier": "chat.kelailai.workchat",
+  "build": {
+    "frontendDist": "../dist_workchat",
+    "devUrl": "http://localhost:8090",
+    "beforeDevCommand": "npx vite --mode development.tauri",
+    "beforeBuildCommand": "npx vite build --mode production.tauri"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "企聊客服系统",
+        "width": 700,
+        "height": 415,
+        "resizable": true,
+        "decorations": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser"
+      }
+    }
+  }
+}

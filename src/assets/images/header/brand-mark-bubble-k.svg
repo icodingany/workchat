@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- 标准版：kelailai-k-cs / mark-round（圆角方黑底 + 白 K），透明画布 -->
+  <rect x="48" y="48" width="928" height="928" rx="280" fill="#111111"/>
+  <path fill="#FFFFFF" d="M320 270H440V455L605 270H755L525 500L755 750H605L440 535V750H320Z"/>
+</svg>

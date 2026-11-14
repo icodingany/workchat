@@ -1,0 +1,32 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "records": 2,
+    "rows": [
+      {
+        "id": 10001,
+        "convId": "wxid_friend_contract",
+        "wxId": "wx_contract_001",
+        "contentType": null,
+        "ContentType": "1",
+        "content": "生产形状：contentType 为 null 但 ContentType 有效",
+        "msgTime": 1756001000,
+        "senderId": "wxid_friend_contract",
+        "msgId": "9001",
+        "msgRemoteId": "8001"
+      },
+      {
+        "id": 10002,
+        "convId": "wxid_friend_contract",
+        "wxId": "wx_contract_001",
+        "contentType": 1,
+        "content": "标准 snake_case 文本",
+        "msg_time": 1756001010,
+        "sender_id": "wx_contract_001",
+        "msg_id": "9002",
+        "msg_svr_id": "8002"
+      }
+    ]
+  }
+}

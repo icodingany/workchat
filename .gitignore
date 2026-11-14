@@ -1,0 +1,61 @@
+.DS_Store
+node_modules
+/dist*
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.zip
+*.bak
+*.rar
+
+#Electron-builder output
+/dist_electron
+/workchat_dist
+
+# electron-vite intermediate output (main/preload/renderer 三入口产物)
+/out
+
+# Test run artifacts (会随每次测试运行变化，不入库)
+/test-results/
+/e2e/artifacts/
+# 根目录散落的 e2e 诊断输出（PowerShell 重定向，编码不可读）
+/e2e-*.txt
+
+# AI assistant internals (计划/会话文件，不入库)
+/.zcode/
+
+# 临时构建/诊断日志与一次性脚本（不入库）
+/tmp/
+
+# kelai 同步扫描中间产物（每次重扫会变，不入库；由 scripts/check-kelai-sync.js 生成）
+/kelai-sync-report.json
+
+# Private local configuration and optional proprietary screenshot helpers
+.env.publish
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.exe
+*.dll
+.claude/
+.cursor/
+.codex/
+src-tauri/target/

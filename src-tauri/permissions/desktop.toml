@@ -1,0 +1,19 @@
+[[permission]]
+identifier = "allow-desktop-operation"
+description = "Allow desktop shell operations (min/max/login/...)"
+commands.allow = ["desktop_operation"]
+
+[[permission]]
+identifier = "allow-open-external-url"
+description = "Allow opening external http(s) URLs"
+commands.allow = ["open_external_url"]
+
+[[permission]]
+identifier = "allow-check-for-updates"
+description = "Allow updater check stub (P3)"
+commands.allow = ["check_for_updates"]
+
+[[permission]]
+identifier = "allow-quit-and-install"
+description = "Allow quit and install stub (P3)"
+commands.allow = ["quit_and_install"]

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <!-- 企微头像等 CDN 常返回 http://，在 HTTPS 页自动升级，避免 Mixed Content 警告 -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <script>
+    // 在任何资源加载前清掉遗留 Service Worker。对齐 kelailaichatpc：Chrome 若仍被
+    // 旧 SW 控制则带时间戳持续重试，勿仅用 sessionStorage 跳过一次。这是 SW 治理的第 1
+    // 道防线（最早执行点，放 head 最前），避免应用代码尚未加载就被旧 SW 拦截、返回已被
+    // 新部署删除的旧 bundle（404）→ 假死。第 2 道（main.js bootstrapServiceWorkerCleanup）
+    // + 第 3 道（versionChecker.json 版本检测）在其后各兜一层。
+    (function purgeLegacyServiceWorkerEarly() {
+      if (location.protocol === 'app:' || location.protocol === 'file:') return
+      var host = location.hostname
+      if (host === 'localhost' || host === '127.0.0.1' || host === '::1') return
+      if (!('serviceWorker' in navigator)) return
+
+      var DONE = 'workchat_sw_clean_v2'
+      var RELOADS = 'workchat_sw_reload_v2'
+      var maxReloads = 5
+
+      function stillControlled() {
+        return !!(navigator.serviceWorker && navigator.serviceWorker.controller)
+      }
+      function reloadCount() {
+        return parseInt(sessionStorage.getItem(RELOADS) || '0', 10) || 0
+      }
+      function markClean() {
+        sessionStorage.setItem(DONE, '1')
+        sessionStorage.removeItem(RELOADS)
+      }
+
+      if (sessionStorage.getItem(DONE) === '1' && !stillControlled()) return
+      if (reloadCount() >= maxReloads) {
+        markClean()
+        return
+      }
+
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
+        var had = (regs && regs.length > 0) || stillControlled()
+        if (!had) {
+          markClean()
+          return
+        }
+        return Promise.all(regs.map(function (r) { return r.unregister() })).then(function () {
+          if ('caches' in window) {
+            return caches.keys().then(function (keys) {
+              return Promise.all(keys.map(function (k) { return caches.delete(k) }))
+            })
+          }
+        }).then(function () {
+          if (stillControlled()) {
+            sessionStorage.setItem(RELOADS, String(reloadCount() + 1))
+            sessionStorage.removeItem(DONE)
+            var url = new URL(location.href)
+            url.searchParams.set('_sw', String(Date.now()))
+            location.replace(url.toString())
+            return
+          }
+          markClean()
+        })
+      }).catch(function () {
+        if (!stillControlled()) markClean()
+      })
+    })()
+  </script>
+  <script>
+    // 老地址指引：独立（顶层窗口）打开 web 版时跳转客徕徕登录页。
+    // 客徕徕宿主以内嵌 iframe（SSO 免登）使用本站，此场景 window.top !== self，不跳转。
+    (function redirectStandaloneToKelai() {
+      return // 2026-09-02 暂停：先别跳转客徕徕登录页；恢复时删除此 return 即可
+      if (location.protocol === 'app:' || location.protocol === 'file:') return
+      var host = location.hostname
+      if (host === 'localhost' || host === '127.0.0.1' || host === '::1') return
+      if (window.top === window.self) {
+        location.replace('https://example.invalid/login')
+      }
+    })()
+  </script>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=20260719r">
+  <link rel="icon" href="/favicon.ico?v=20260719r">
+  <title>企聊客服系统</title>
+</head>
+
+<body>
+  <noscript>
+    <strong>企聊客服系统需要启用 JavaScript 才能正常运行，请在浏览器设置中开启。</strong>
+  </noscript>
+  <div id="app"></div>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>

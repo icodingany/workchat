@@ -1,0 +1,19 @@
+{
+  "code": 0,
+  "data": {
+    "records": 1,
+    "rows": [
+      {
+        "id": 20001,
+        "ConvId": "wxid_friend_contract",
+        "WxId": "wx_contract_001",
+        "ContentType": "1",
+        "Content": "PascalCase 正文",
+        "CreateTime": 1756002000,
+        "SenderId": "wxid_friend_contract",
+        "MsgId": "9100",
+        "MsgRemoteId": "8100"
+      }
+    ]
+  }
+}

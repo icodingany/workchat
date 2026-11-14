@@ -1,0 +1,14 @@
+syntax = "proto3";
+package Im.Scrm.Ww.Proto; //命名空间约定
+
+import "WTransport.proto";
+
+message TakeLuckyMoneyTaskMessage {
+    int64 WxId = 1; // 设备企微号
+    int64 ConvId = 2; // 会话 RemoteId（私聊/群聊共用）
+    int64 MsgRemoteId = 3; // 原消息唯一 id
+    string MsgKey = 4; // Content JSON 中的 Key/MsgKey/TransferId
+    int64 TaskId = 5; // 任务 id；退还时必带
+    bool Refuse = 6; // false=收取，true=退还（仅转账）
+    EnumContentType ContentType = 7; // LuckyMoney=11 / MoneyTrans=12
+}

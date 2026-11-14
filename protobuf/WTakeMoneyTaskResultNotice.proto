@@ -1,0 +1,18 @@
+syntax = "proto3";
+package Im.Scrm.Ww.Proto; //命名空间约定
+
+import "WTransport.proto";
+
+message TakeMoneyTaskResultNoticeMessage {
+    bool Success = 1; // 是否成功
+    EnumErrorCode Code = 2; // 失败错误码
+    string ErrMsg = 3; // 失败描述
+    int64 TaskId = 4; // 业务任务 id
+    string MsgKey = 5; // 消息 Key
+    int64 WxId = 6; // 企微号
+    int32 Amount = 7; // 红包金额（分）；转账可为 0
+    int32 Type = 8; // 0 红包 / 1 转账
+    int64 SenderId = 9; // 发送者 id
+    string SenderName = 10; // 发送者昵称
+    int64 RecTime = 11; // 完成时间 ms；0=未提供
+}

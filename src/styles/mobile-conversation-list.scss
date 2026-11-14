@@ -1,0 +1,51 @@
+/* 移动端会话列表：复用 PC ConversationList，全宽纵向布局 */
+.mobile-conversation-list.conversation-list {
+  width: 100%;
+  min-width: 0;
+  border-right: none;
+  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+
+  .search-box {
+    padding: 8px 12px;
+    background: #fff;
+  }
+
+  .friends-content {
+    margin-bottom: 0;
+    background: #fff;
+  }
+
+  .friends-bottom {
+    border-top: 1px solid #ebedf0;
+    background: #fff;
+    font-size: 12px;
+    color: #969799;
+  }
+
+  .friend-info {
+    padding: 10px 12px;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      background: #f7f8fa;
+    }
+  }
+
+  .opration-btns {
+    .fa {
+      font-size: 14px;
+    }
+  }
+}
+
+.mobile-convs-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #fff;
+  border-bottom: 1px solid #ebedf0;
+  flex-shrink: 0;
+}

@@ -1,0 +1,86 @@
+/**
+ * 全局变量
+ * 命名规范 —— 遵守语义化命名：lg-大号、md-中号、base-基本号、sm-小号、mini-超小号
+ * 色板对齐 kelailaichatpc：管理端蓝 / 会话翠绿 / 导航琥珀 / 登录青
+ */
+
+// 主色（Element 兼容；实际 UI 主强调见下方 accent）
+$brand-color-base: #0066cc;
+$brand-color-1: #1a75d1;
+$brand-color-2: #3385d6;
+$brand-color-3: #4d94db;
+$brand-color-4: #66a3e0;
+$brand-color-5: #80b3e6;
+$brand-color-6: #99c2eb;
+$brand-color-7: #b3d1f0;
+$brand-color-8: #cce0f5;
+$brand-color-9: #e6f0fa;
+
+// success color
+$success-color-base: #67c23a;
+$success-color-1: #e1f3d8;
+$success-color-2: #f0f9eb;
+
+// warning color
+$warning-color-base: #e6a23c;
+$warning-color-1: #faecd8;
+$warning-color-2: #fdf6ec;
+
+// danger color
+$danger-color-base: #f56c6c;
+$danger-color-1: #fde2e2;
+$danger-color-2: #fef0f0;
+
+// info color
+$info-color-base: #909399;
+$info-color-1: #e9e9eb;
+$info-color-2: #f4f4f5;
+
+// font color
+$font-color-base: #303133;
+$font-color-1: #606266;
+$font-color-2: #909399;
+$font-color-3: #c0c4cc;
+
+// border color（对齐 kelailaichatpc）
+$border-color-base: #c3c3c3;
+$border-color-1: #e4e7ed;
+$border-color-2: #ebeef5;
+$border-color-3: #f2f6fc;
+
+// 顶栏 / 内容底
+$bg-color-nav-title-1: #ffffff;
+$bg-color-nav-title-2: #f8f9fb;
+$bg-color-nav-title-3: #f0f2f5;
+$bg-color-content-base: #fff;
+
+// 场景强调色（对齐 kelailaichatpc）
+$accent-admin: #0066cc;
+$accent-admin-hover: #0052a3;
+$accent-nav: #ff9f00;
+$accent-nav-bg: #fff7e8;
+$accent-conv: #10b981;
+$accent-conv-hover: #059669;
+$accent-login: #00aeff;
+$accent-bubble-from: #d4f4dd;
+$accent-bubble-to: #b8e6c5;
+$admin-sidebar-bg: #304156;
+$admin-sidebar-text: #bfcbd9;
+$admin-sidebar-active: #4080ff;
+$admin-sidebar-hover: #263445;
+
+// =====================================================
+$font-weight-base: 400;
+$font-size-lg: 18px;
+$font-size-md: 16px;
+$font-size-base: 14px;
+$font-size-sm: 12px;
+$font-size-mini: 10px;
+
+$color-important: #222222;
+$color-common: #606060;
+$color-desc: #909090;
+$color-disabled: #bfbfbf;
+$color-error: #f04134;
+$color-warn: #f5a623;
+$color-lighting: #9013fe;

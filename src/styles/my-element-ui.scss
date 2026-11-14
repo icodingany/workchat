@@ -1,0 +1,965 @@
+// 主色对齐 kelailaichatpc 管理端蓝
+.el-button--primary {
+  background-color: #0066cc;
+  border-color: #0066cc;
+  &:hover,
+  &:focus {
+    background-color: #0052a3;
+    border-color: #0052a3;
+  }
+}
+.el-button--text {
+  color: #0066cc !important;
+  &:hover,
+  &:focus {
+    color: #0052a3 !important;
+  }
+}
+.el-checkbox {
+  &__input.is-checked {
+    .el-checkbox__inner {
+      background-color: #0066cc !important;
+      border-color: #0066cc !important;
+      &::after {
+        border-color: white !important;
+      }
+    }
+  }
+}
+.el-radio__input.is-checked .el-radio__inner {
+  background-color: #0066cc;
+  border-color: #0066cc;
+}
+.el-switch.is-checked .el-switch__core {
+  border-color: #0066cc;
+  background-color: #0066cc;
+}
+
+.el-table {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  .el-table__header-wrapper {
+    min-height: 49px;
+  }
+  .el-table__body-wrapper {
+    // overflow: auto;
+    overflow-y: auto;
+    @include scroll;
+  }
+  .cell {
+    text-overflow: clip !important;
+  }
+}
+
+// 关闭大图的样式
+.el-image {
+  .el-icon-circle-close {
+    color: white;
+  }
+}
+
+// 弹框的基本样式
+// Element Plus：class 挂在 .el-dialog 面板上；Element UI：挂在遮罩包装层。
+// 若把包装层的横向 flex 居中写到面板上，header/body/footer 会并排（群发消息等弹窗错乱）。
+.base-dialog {
+  &:not(.el-dialog) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.el-dialog,
+  .el-dialog {
+    margin-top: 0 !important;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .el-dialog__header {
+      padding: 10px 20px;
+      // border: solid red 1px;
+      // .el-dialog__title {
+      // font-size: 14px;
+      // color: #333333;
+      // border: solid red 1px;
+      // }
+      .el-dialog__headerbtn {
+        top: 14px;
+      }
+    }
+
+    .el-dialog__body {
+      flex: 1 1 auto;
+      padding: 20px;
+      overflow: auto;
+    }
+
+    .el-dialog__footer {
+      padding: 10px 20px;
+    }
+  }
+}
+
+// 工具栏 小程序样式
+.we-app-dialog {
+  @extend .base-dialog;
+  &.el-dialog,
+  .el-dialog {
+    width: 724px;
+    height: 507px;
+
+    .el-dialog__body {
+      display: flex;
+      flex-direction: row;
+      align-content: flex-start;
+    }
+  }
+}
+
+.my-collection-dialog {
+  @extend .base-dialog;
+  &.el-dialog,
+  .el-dialog {
+    width: 746px;
+    height: 507px;
+
+    .el-dialog__body {
+      display: flex;
+      flex-direction: row;
+      align-content: flex-start;
+      padding: 0 20px;
+
+      .el-tabs {
+        overflow: hidden;
+        .el-tabs__content {
+          // overflow: auto;
+          // display: flex;
+          // border: solid red 1px;
+
+          .picture-list {
+            @extend .scroll;
+
+            width: 100%;
+            max-height: 354px;
+            overflow: auto;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            .picture-item {
+              position: relative;
+              width: 90px;
+              height: 90px;
+              min-width: 90px;
+              margin: 5px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+            }
+            .picture-item-checked {
+              border: solid #0066cc 1px;
+            }
+          }
+          .delete-icon {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            color: red;
+            cursor: pointer;
+          }
+          .link-list {
+            height: 354px;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: auto;
+            @extend .scroll;
+          }
+        }
+      }
+    }
+  }
+}
+
+.we-app-item {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  cursor: pointer;
+  .we-app-img {
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+  }
+  .we-app-img-no {
+    @extend .we-app-img;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .we-app-name {
+    max-width: 90px;
+    padding: 5px;
+  }
+  .el-icon-delete {
+    color: #f56c6c;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}
+.we-app-item-checked {
+  background-color: #eff5fd;
+  color: #5a9cf8;
+}
+
+.label-dialog {
+  @extend .base-dialog;
+
+  &.el-dialog,
+  .el-dialog {
+    height: 50%;
+    min-height: 500px;
+
+    .el-dialog__body {
+      @extend .scroll;
+      .p-class {
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        font-weight: 600;
+      }
+      .chose {
+        color: #10b981;
+      }
+    }
+  }
+}
+
+/* 好友资料「添加标签」——对齐 kelailaichatpc */
+.label-remark-add-label {
+  &.el-dialog,
+  .el-dialog {
+    margin-top: 0 !important;
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .el-dialog__header {
+      .el-dialog__title {
+        width: 150px;
+        font-size: 14px;
+        color: #333333;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .el-dialog__headerbtn {
+        top: 10px;
+      }
+    }
+
+    .el-dialog__body {
+      flex: 1 1 auto;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+
+      .p-class {
+        padding: 5px;
+        background-color: #bfbfbf;
+        margin: 0;
+        font-size: 13px;
+      }
+      ul {
+        margin: 10px 5px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .label-class {
+        color: #409eff;
+        background-color: #ecf5ff;
+        border-radius: 4px;
+        border: 1px solid #d9ecff;
+        display: inline-block;
+        height: 32px;
+        line-height: 32px;
+        font-size: 12px;
+        padding: 0 8px;
+        margin: 2px;
+        cursor: pointer;
+      }
+      .chose {
+        color: #e6a23c;
+        border-color: #f5dab1;
+        background-color: #fdf6ec;
+      }
+    }
+    .el-dialog__footer {
+      padding: 10px;
+    }
+  }
+}
+
+// SlotFriends的样式
+// Element Plus：class 挂在 .el-dialog 上；勿把横向 flex 居中写到面板上
+.slot-friends {
+  &:not(.el-dialog) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.el-dialog,
+  .el-dialog {
+    margin-top: 10vh !important;
+    width: 724px;
+    height: 507px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .el-dialog__header {
+      padding: 10px;
+      .el-dialog__title {
+        width: 150px;
+        font-size: 14px;
+        color: #333333;
+      }
+      .el-dialog__headerbtn {
+        top: 15px;
+      }
+    }
+
+    .el-dialog__body {
+      flex: 1 1 auto;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 0 10px;
+
+      .all-check {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .slot-friends-content {
+        flex: 1 1 auto;
+        display: flex;
+        overflow: auto;
+
+        .operation-box {
+          width: 137px;
+          min-width: 137px;
+          height: 100%;
+          padding: 5px 5px 0 5px;
+          border-radius: 5px 0 0 5px;
+          border: solid #eeeeee 1px;
+          overflow: hidden;
+
+          display: flex;
+          flex-direction: column;
+
+          .search-input {
+            .el-input__inner {
+              height: 28px;
+              line-height: 28px;
+              color: #dadada;
+              font-size: 12px;
+              padding-left: 5px;
+            }
+          }
+
+          .label-list {
+            width: 100%;
+            flex: 1 1 auto;
+            overflow: auto;
+            .label-item {
+              display: flex;
+              align-items: center;
+              color: #333333;
+              font-size: 12px;
+              height: 26px;
+              cursor: pointer;
+              p {
+                margin-left: 5px;
+                width: 90px;
+                height: 26px;
+                line-height: 26px;
+                @extend .ellipsis;
+              }
+            }
+            .current-label {
+              color: #ff9f00;
+            }
+            .label-disabled {
+              // border: solid red 1px;
+              color: #c0c4cc;
+              cursor: not-allowed;
+              input {
+                cursor: not-allowed;
+                color: #c0c4cc;
+                border: solid #c0c4cc 1px;
+              }
+            }
+          }
+        }
+
+        .friends-list {
+          padding: 5px;
+          overflow: hidden;
+          flex: 1 1 auto;
+          border: solid #eeeeee 1px;
+          border-left: none;
+          border-radius: 0 5px 5px 0;
+          display: flex;
+          flex-direction: column;
+          .el-table {
+            width: 100%;
+            height: 100%;
+            .el-table__header-wrapper {
+              // min-height: 60px;
+              min-height: 40px;
+              display: flex;
+              align-items: center;
+              background-color: #ff9f000d;
+
+              .el-table__header {
+                th {
+                  background-color: #ff9f000d;
+                  padding: 0;
+                  border-bottom: none;
+                }
+              }
+            }
+            td {
+              padding: 5px;
+            }
+          }
+        }
+      }
+      .tip {
+        font-size: 12px;
+        color: #999999;
+        padding: 5px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    .el-dialog__footer {
+      padding: 10px;
+    }
+  }
+}
+
+// 添加群发dialog样式
+// 现内容为 MsgComposer + MassSendTaskConfig 纵向堆叠；勿再横向 space-between（会把配置挤到窄侧栏导致字数统计错位）
+.group-send-dialog {
+  @extend .base-dialog;
+  &.el-dialog,
+  .el-dialog {
+    width: 720px;
+    max-height: 90vh;
+    height: auto;
+
+    .el-dialog__header {
+      // height: 44px;
+      padding: 10px 20px;
+      border-bottom: solid #e9e9eb 1px;
+      .el-dialog__title {
+        font-size: 14px;
+      }
+    }
+
+    .el-dialog__body {
+      width: 100%;
+      max-height: calc(90vh - 120px);
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .el-dialog__footer {
+      border-top: solid #e9e9eb 1px;
+      .group-send-footer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+// 消息预览的样式
+.preview-box {
+  width: 254px;
+  height: 500px;
+  background-image: url("~@/assets/images/group/previewBg.png");
+  padding: 70px 14px;
+
+  .preview-list {
+    height: 100%;
+    overflow: auto;
+    @extend .scroll;
+
+    .preview-item {
+      margin: 10px 5px;
+      display: flex;
+      // align-items: center;
+
+      .preview-item-bg {
+        background-color: #ffffff;
+        padding: 5px;
+      }
+      .preview-item-link {
+        width: 170px;
+        display: flex;
+        flex-direction: column;
+        .ellipsis-3 {
+          color: #a8a8a8;
+          overflow: hidden;
+          font-size: 12px;
+          line-height: 20px;
+          margin: 5px;
+          @include ellipsis(3);
+        }
+      }
+    }
+  }
+}
+
+// 任务详情
+.task-detail-dialog {
+  @extend .base-dialog;
+  &.el-dialog,
+  .el-dialog {
+    width: 600px;
+    height: 646px;
+
+    .el-dialog__header {
+      border-bottom: solid #e9e9eb 1px;
+    }
+
+    .el-dialog__body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      .detail-ls {
+        width: 254px;
+        li {
+          display: flex;
+          line-height: 40px;
+        }
+      }
+    }
+
+    .el-dialog__footer {
+      border-top: solid #e9e9eb 1px;
+    }
+  }
+}
+
+// 添加回复的dialog样式
+.add-reply-dialog {
+  @extend .base-dialog;
+  &.el-dialog,
+  .el-dialog {
+    width: 724px;
+    height: 477px;
+
+    .el-dialog__body {
+      padding: 0 30px;
+      .add-reply-content {
+        flex: 1 1 auto;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .key-word {
+          color: #999999;
+          font-size: 12px;
+          padding: 10px 0;
+          align-self: flex-start;
+        }
+
+        .key-type {
+          width: 100%;
+        }
+
+        .set-conntent {
+          flex: 1 1 auto;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          .add-reply-aside {
+            li {
+              width: 115px;
+              min-width: 115px;
+              height: 27px;
+              line-height: 27px;
+              cursor: pointer;
+              font-size: 14px;
+              font-weight: 500;
+              color: #333333;
+              border-left: solid #fff 4px;
+              i {
+                color: #999999;
+                margin-left: 26px;
+                margin-right: 6px;
+              }
+            }
+            .li-selected {
+              background-color: #fffaf2;
+              color: #ff9f00;
+              border-left: solid #ff9f00 4px;
+              i {
+                color: #ff9f00;
+              }
+            }
+          }
+
+          .write-content {
+            flex: 1 1 auto;
+            height: 200px;
+            margin-left: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: solid 1px #dcdfe6;
+
+            .el-textarea {
+              .el-textarea__inner {
+                border: none;
+              }
+            }
+
+            .link-app-box {
+              flex: 1 1 auto;
+              width: 100%;
+              @extend .scroll;
+              display: flex;
+              flex-wrap: wrap;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 微信红包/转账弹窗（append-to-body 挂到 body，必须全局样式，对齐 kelailaichatpc）
+.hb-action-dialog {
+  &.el-dialog,
+  .el-dialog {
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .el-dialog__header {
+    padding: 0;
+    display: none;
+  }
+  .el-dialog__body {
+    padding: 0;
+  }
+  &.hb-action-dialog-transfer {
+    &.el-dialog,
+    .el-dialog {
+      background: #f5f5f5 !important;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+    }
+    .el-dialog__header {
+      display: block;
+      padding: 15px 20px 0;
+      .el-dialog__headerbtn {
+        top: 15px;
+        right: 15px;
+        width: 32px;
+        height: 32px;
+        background: #e64340;
+        border-radius: 4px;
+        .el-dialog__close {
+          color: #fff;
+          font-size: 16px;
+        }
+        &:hover {
+          background: #d63633;
+        }
+      }
+    }
+    .el-dialog__body {
+      padding: 16px 20px 24px;
+    }
+    .hb-action-close-wrap {
+      display: none;
+    }
+  }
+  .hb-action-dialog-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .hb-action-content {
+    width: 100%;
+  }
+  .hb-transfer-card {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 16px;
+    .hb-transfer-status,
+    .hb-transfer-received-status,
+    .hb-transfer-refunded-status {
+      text-align: center;
+      margin-bottom: 16px;
+      .hb-transfer-clock,
+      .hb-transfer-success-icon,
+      .hb-transfer-refund-icon {
+        font-size: 48px;
+        margin-bottom: 8px;
+      }
+      .hb-transfer-clock {
+        color: #409eff;
+      }
+      .hb-transfer-success-icon {
+        color: #07c160;
+      }
+      .hb-transfer-refund-icon {
+        color: #e6a23c;
+      }
+      p {
+        font-size: 16px;
+        color: #303133;
+        margin: 0;
+      }
+    }
+    .hb-transfer-amount {
+      font-size: 32px;
+      font-weight: 600;
+      color: #303133;
+      text-align: center;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+    .hb-transfer-time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #909399;
+      margin-bottom: 16px;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    .hb-transfer-accept-btn {
+      width: 100%;
+      height: 44px;
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 20px;
+      margin-bottom: 16px;
+      margin-left: 0;
+      background: #07c160 !important;
+      border-color: #07c160 !important;
+      &:hover {
+        background: #06ad56 !important;
+        border-color: #06ad56 !important;
+      }
+    }
+    .hb-transfer-refund {
+      text-align: center;
+      font-size: 13px;
+      color: #909399;
+      .hb-transfer-refund-tip {
+        margin-right: 4px;
+      }
+      .hb-transfer-refund-link {
+        color: #409eff;
+        text-decoration: underline;
+        &:hover {
+          color: #66b1ff;
+        }
+      }
+    }
+  }
+  .hb-action-close-wrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .hb-action-close-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 2px solid #d4a574;
+    border-radius: 50%;
+    background: #fff;
+    color: #c49a6c;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.hb-action-content.hb-action-redpacket {
+  background: linear-gradient(180deg, #e64340 0%, #c62f2c 100%);
+  color: #fff;
+  padding: 24px 20px 28px;
+  min-height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  .hb-action-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    .hb-action-avatar {
+      flex-shrink: 0;
+    }
+    .hb-action-sender-text {
+      font-size: 15px;
+      opacity: 0.95;
+    }
+  }
+  .hb-action-body {
+    padding: 20px 0;
+    .hb-action-wish {
+      text-align: center;
+      font-size: 17px;
+      opacity: 0.95;
+    }
+  }
+  .hb-action-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    .hb-btn-accept {
+      width: 72px;
+      height: 72px;
+      min-width: 72px;
+      border-radius: 50%;
+      font-size: 22px;
+      font-weight: 600;
+      padding: 0;
+      background: #e8b923 !important;
+      border-color: #e8b923 !important;
+      color: #fff !important;
+      &:hover,
+      &:focus {
+        background: #d5a91a !important;
+        border-color: #d5a91a !important;
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+// 红包详情弹窗（同样 append-to-body）
+.hb-details {
+  &.hb-details-claimed {
+    &.el-dialog,
+    .el-dialog {
+      width: 360px;
+    }
+    .el-dialog__body {
+      padding: 16px 20px 20px;
+    }
+  }
+  .hb-btns {
+    margin-top: 10px;
+  }
+  .hb-claimed {
+    .hb-claimed-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      .hb-claimed-sender {
+        font-size: 15px;
+        color: #333;
+        font-weight: 500;
+      }
+    }
+    .hb-claimed-wish {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .hb-claimed-summary {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 16px;
+    }
+    .hb-claimed-records {
+      border-top: 1px solid #eee;
+      padding-top: 12px;
+    }
+    .hb-claimed-record {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f5f5f5;
+      &:last-child {
+        border-bottom: none;
+      }
+      .hb-claimed-record-info {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        .hb-claimed-record-name {
+          font-size: 14px;
+          color: #333;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .hb-claimed-record-time {
+          font-size: 12px;
+          color: #999;
+        }
+      }
+      .hb-claimed-record-amount {
+        font-size: 15px;
+        color: #e64340;
+        font-weight: 500;
+      }
+    }
+  }
+}

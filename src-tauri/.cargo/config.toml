@@ -1,0 +1,3 @@
+[build]
+# Windows 上默认并行过高易触发 rustc STATUS_STACK_BUFFER_OVERRUN / 配额不足
+jobs = 2

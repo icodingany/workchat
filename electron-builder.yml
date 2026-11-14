@@ -1,0 +1,70 @@
+# Electron Builder 配置（workchat，对齐 kelailaichatpc 结构，workchat 无 native 依赖故更简）
+# 入口：electron-vite 产物 out/main/index.js（package.json main 字段指向）
+appId: com.jubochat.workchat.app
+productName: 企聊客服系统
+executableName: workchat
+copyright: Copyright © 2019-2026 kelailai
+
+# 明确指定 Electron 版本，避免 electron-builder 读 node_modules 推断出错
+electronVersion: 43.1.0
+
+# workchat 无原生模块（无 sqlite3/sharp），跳过 rebuild
+npmRebuild: false
+
+directories:
+  output: dist_electron
+
+# 国内镜像：electron 二进制 / electron-builder 工具链（npm 不再认 .npmrc，由 electron-builder 自身读取）
+electronDownload:
+  mirror: https://npmmirror.com/mirrors/electron/
+
+asar: true
+compression: store  # NSIS 几乎不压缩，安装解压最快
+
+files:
+  - out/**
+  - out/main/**
+  - out/preload/**
+  - out/renderer/**
+  # 打包后备用 helper（pack-win.js 会硬校验）
+  - electron/main/updaterConfig.js
+  - electron/main/updaterInstall.js
+  - electron/main/updaterErrors.js
+
+# 必须显式排除，否则会把 dist_workchat / node_modules 全打进去
+extraResources:
+  - from: out/renderer/version.json
+    to: ../version.json
+  - from: public/app.ico
+    to: ../app.ico
+  - from: public/empty.ico
+    to: ../empty.ico
+
+win:
+  icon: public/app.ico
+  # 安装包/自动更新产物强制 ASCII，避免中文 path 导致 electron-updater 下载/安装失败
+  artifactName: workchat-Setup-${version}.${ext}
+  target:
+    - target: nsis
+      arch:
+        - x64
+
+nsis:
+  oneClick: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  installerIcon: public/app.ico
+  uninstallerIcon: public/app.ico
+  installerHeaderIcon: public/app.ico
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: 企聊客服系统
+  uninstallDisplayName: 企聊客服系统
+  deleteAppDataOnUninstall: false  # 升级保留用户数据
+  runAfterFinish: true
+  warningsAsErrors: false
+  packElevateHelper: true
+
+publish:
+  - provider: generic
+    url: https://file.example.invalid/workchat/

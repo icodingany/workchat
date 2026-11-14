@@ -1,0 +1,173 @@
+/**
+ * 移动端管理端页面布局（工具栏换行、分页精简等）。
+ * 管理组件复用 PC 的 .set-parameters 横排 flex，窄屏会裁切右侧按钮。
+ */
+body.workchat-mobile {
+  .set-parameters {
+    flex-wrap: wrap !important;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 4px !important;
+
+    > .el-button,
+    > .el-select,
+    > .el-input,
+    > .wechat-id-input,
+    > .search-input {
+      margin-left: 0 !important;
+    }
+
+    > .el-input,
+    > .device-wechat-id,
+    > .search-input {
+      flex: 1 1 100%;
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+    .device-wechat-id,
+    .device-wechat-id .el-input__wrapper,
+    .device-wechat-id .el-input__inner {
+      width: 100% !important;
+    }
+
+    > .el-select {
+      flex: 1 1 calc(50% - 4px);
+      min-width: 0;
+      width: auto !important;
+    }
+
+    > .el-button {
+      flex: 0 0 auto;
+    }
+
+    .filter-item {
+      width: auto !important;
+      flex: 1 1 calc(50% - 4px);
+      min-width: 0;
+    }
+  }
+
+  .picker-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+
+    .el-input {
+      width: 100% !important;
+      max-width: 100%;
+    }
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .el-pagination {
+    flex-wrap: wrap;
+    row-gap: 6px;
+    justify-content: center !important;
+    padding: 8px 4px !important;
+
+    .el-pagination__sizes,
+    .el-pagination__jump {
+      display: none;
+    }
+  }
+
+  .ww-admin-page {
+    padding: 8px 4px;
+  }
+
+  .mobile-admin-cards {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-admin-card {
+    background: #fff;
+    border: 1px solid #ebedf0;
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  .mobile-admin-card__head {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .mobile-admin-card__title {
+    font-size: 15px;
+    font-weight: 600;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-admin-card__rows {
+    margin: 0;
+  }
+
+  .mobile-admin-card__row {
+    display: flex;
+    font-size: 13px;
+    gap: 8px;
+    line-height: 1.45;
+    margin: 0 0 6px;
+
+    dt {
+      color: #969799;
+      flex: 0 0 auto;
+      margin: 0;
+      width: 76px;
+    }
+
+    dd {
+      color: #323233;
+      flex: 1;
+      margin: 0;
+      min-width: 0;
+      word-break: break-word;
+    }
+  }
+
+  .mobile-admin-card__actions {
+    border-top: 1px solid #f2f3f5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .mobile-admin-card__switch {
+    align-items: center;
+    display: flex;
+    font-size: 13px;
+    justify-content: space-between;
+  }
+
+  .mobile-admin-card__btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  .mobile-admin-card__badge {
+    color: #07c160;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+}
